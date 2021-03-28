@@ -36,14 +36,11 @@ public class SqlSessionUtil {
     public static SqlSession getSqlSession(){
 
         SqlSession session = t.get();
-
         if(session==null){
             session = factory.openSession();
             t.set(session);
         }
-
         return session;
-
     }
 
     public static void myClose(SqlSession session){

@@ -65,7 +65,10 @@
 				success : function (data) {
 					/*
 					分析 data
-						{“success” : true/false}
+						{
+						“success” : true/false
+						"msg": ”哪错了“
+						}
 					 */
 
 					//如果登录成功
@@ -73,12 +76,10 @@
 						//跳转到工作台的初试页
 						window.location.href = "workbench/index.html";
 					}else {
-						$("#msg").html("登录失败");
+						$("#msg").html("msg");
 					}
 				}
 			})
-
-
 		}
 
 	</script>

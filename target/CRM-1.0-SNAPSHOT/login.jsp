@@ -47,11 +47,39 @@
 
 			if (loginAct == "" || loginPwd == ""){
 				$("#msg").html("账号密码不能为空");
+
+				//如果账号密码为空，则需要及时强制终止该方法
+				return false;
 			}
 
 			//去后台验证登录的操作
+			//url前面不加  /
+			$.ajax({
+				url : "settings/user/login.do",
+				data : {
+					"loginAct": loginAct,
+					"loginPwd": loginPwd
+				},
+				type : "post",
+				dataType : "json",
+				success : function (data) {
+					/*
+					分析 data
+						{
+						“success” : true/false
+						"msg": ”哪错了“
+						}
+					 */
 
-
+					//如果登录成功
+					if(data.success){
+						//跳转到工作台的初试页
+						window.location.href = "workbench/index.html";
+					}else {
+						$("#msg").html("msg");
+					}
+				}
+			})
 		}
 
 	</script>
